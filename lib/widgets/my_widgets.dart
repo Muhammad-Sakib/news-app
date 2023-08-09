@@ -178,13 +178,18 @@ Widget myTextButtonWithIcon(text, {icon}) {
   );
 }
 
-Widget MyTextButtonSmall(text, {color, function}) {
+Widget MyTextButtonSmall(text, {Color? color, function}) {
   return InkWell(
     onTap: function,
     child: Container(
+      margin: EdgeInsets.only(right: 8),
+      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
       decoration: BoxDecoration(
-          color: color.opacity(0.2) ?? Color.fromARGB(255, 234, 234, 234)),
-      child: myText(text),
+          borderRadius: BorderRadius.circular(15),
+          color: color != null
+              ? color.withOpacity(0.12)
+              : Color.fromARGB(255, 234, 234, 234)),
+      child: myText(text, size: 15, color: color),
     ),
   );
 }
